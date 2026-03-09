@@ -32,6 +32,8 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "autocmds"
 
+vim.cmd[[colorscheme tokyonight]]
+
 vim.schedule(function()
   require "mappings"
 end)
