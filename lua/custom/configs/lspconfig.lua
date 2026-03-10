@@ -2,6 +2,7 @@
 local configs = require("plugins.configs.lspconfig")
 
 local servers = {
+  clangd = {},
   pyright = {},
   ts_ls = {},
   lua_ls = {
