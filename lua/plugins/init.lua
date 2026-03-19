@@ -20,20 +20,18 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    config = function()
-      -- We call the setup directly from the main module now
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
-        sync_install = false,
-        auto_install = true,
-        highlight = {
-          enable = true,
-          -- Use standard Neovim syntax coloring alongside Treesitter if you want, 
-          -- but usually, false is better for performance.
-          additional_vim_regex_highlighting = false,
-        },
-        indent = { enable = true },
-      })
+    opts = {
+      ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+      sync_install = false,
+      auto_install = true,
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = { enable = true },
+    },
+    config = function(_, opts)
+      require("nvim-treesitter").setup(opts)
     end,
   },
 
@@ -45,4 +43,3 @@ return {
     },
   },
 }
-
