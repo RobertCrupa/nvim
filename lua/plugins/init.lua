@@ -8,6 +8,11 @@ return {
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    lazy = false,
+    dependencies = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+    },
     config = function()
       require "configs.lspconfig"
     end,
@@ -21,7 +26,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
     opts = {
-      ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+      ensure_installed = { "c", "cpp", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline", "python", "typescript", "tsx" },
       sync_install = false,
       auto_install = true,
       highlight = {
@@ -37,9 +42,11 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
+    lazy = false,
+    dependencies = { "williamboman/mason.nvim" },
     opts = {
-      ensure_installed = { "pyright", "ts_ls", "lua_ls", "marksman" },  -- Auto-install these on startup
-      automatic_installation = true,  -- Install missing servers automatically when vim.lsp.config() is called
+      ensure_installed = { "pyright", "ts_ls", "lua_ls", "marksman" },
+      automatic_installation = true,
     },
   },
 }
